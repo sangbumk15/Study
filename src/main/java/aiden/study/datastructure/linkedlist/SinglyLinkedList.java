@@ -20,6 +20,16 @@ public class SinglyLinkedList<E> {
         return node.val;
     }
 
+    public int getSize() {
+        int size = 0;
+        SinglyLinkedNode<E> node = head;
+        while (node.next != null) {
+            node = node.next;
+            size ++;
+        }
+        return size;
+    }
+
     public void addAtHead(E val) {
         SinglyLinkedNode<E> node = new SinglyLinkedNode<>(val);
         node.next = head;
@@ -87,5 +97,28 @@ public class SinglyLinkedList<E> {
         } else {
             prev.next = cur.next;
         }
+    }
+
+    public void addCycle(int pos) {
+        if (head == null) {
+            return;
+        }
+
+        int size = getSize();
+
+        if (pos >= size) {
+            return;
+        }
+
+        SinglyLinkedNode<E> node = head;
+        SinglyLinkedNode<E> posNode = null;
+        for (int i = 0; i < size; i ++) {
+            if (i == pos) {
+                posNode = node;
+            }
+            node = node.next;
+        }
+
+        node.next = posNode;
     }
 }

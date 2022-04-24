@@ -47,4 +47,20 @@ public class SinglyLinkedListTest {
         assertSame(1, list.get(0));
         assertSame(3, list.get(1));
     }
+
+    @Test
+    public void test_addCycle() {
+        SinglyLinkedList<Integer> list = new SinglyLinkedList<>(new SinglyLinkedNode<>(1));
+        list.addAtTail(2);
+        list.addAtTail(3);
+        list.addAtTail(4);
+        list.addAtTail(5);
+        list.addCycle(2);
+
+        SinglyLinkedNode<Integer> node = list.head;
+        for (int i = 0; i < 7; i ++) {
+            node = node.next;
+        }
+        assertSame(5, node.val);
+    }
 }
