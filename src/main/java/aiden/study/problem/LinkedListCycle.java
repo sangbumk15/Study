@@ -2,6 +2,7 @@ package aiden.study.problem;
 
 /**
  * Leetcode 141
+ * Given head, the head of a linked list, determine if the linked list has a cycle in it.
  */
 public class LinkedListCycle {
     public boolean hasCycle(ListNode head) {
